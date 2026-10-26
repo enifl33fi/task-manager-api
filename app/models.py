@@ -1,5 +1,4 @@
 from datetime import datetime
-from typing import List
 
 from sqlalchemy import DateTime, ForeignKey, String, func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
@@ -19,7 +18,7 @@ class User(Base):
         DateTime(timezone=True), server_default=func.now()
     )
 
-    tasks: Mapped[List["Task"]] = relationship(
+    tasks: Mapped[list["Task"]] = relationship(
         back_populates="owner", cascade="all, delete-orphan"
     )
 
